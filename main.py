@@ -26,14 +26,12 @@ while len(guessed_states) < 50:
    #check if state is among the 50 states of us
 
    if  answer_state == "Exit":
-      missing_state = []
-      for state  in state_list :
-         if state not in guessed_states:
-            missing_state.append(state )
-      new_data = pd.DataFrame(missing_state )
-      new_data.to_csv("States_to_learn.csv")
+         missing_states = [state for state in state_list if state not in guessed_states]
 
-      break
+         new_data = pd.DataFrame(missing_states )
+         new_data.to_csv("States_to_learn.csv")
+         break
+
 
    if answer_state.title()   in  state_list:
       score +=1
